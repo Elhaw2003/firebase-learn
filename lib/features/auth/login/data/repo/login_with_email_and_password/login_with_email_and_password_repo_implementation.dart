@@ -6,11 +6,11 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_learn/core/error/failure.dart';
 import 'package:firebase_learn/core/utilies/app_texts.dart';
 
-import 'login_repo.dart';
+import 'login_with_email_and_password_repo.dart';
 
-class LoginRepoFirebaseImplementation implements LoginRepo{
+class LoginWithEmailAndPasswordRepoFirebaseImplementation implements LoginWithEmailAndPasswordRepo{
   @override
-  Future<Either<Failure, void>> login({required String email, required String password}) async{
+  Future<Either<Failure, void>> loginWithEmailAndPassword({required String email, required String password}) async{
     try {
       final credential = await FirebaseAuth.instance.signInWithEmailAndPassword(
           email: email,

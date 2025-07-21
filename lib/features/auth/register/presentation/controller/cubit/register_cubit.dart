@@ -7,7 +7,7 @@ part 'register_state.dart';
 class RegisterCubit extends Cubit<RegisterState> {
   RegisterCubit({required this.registerRepo}) : super(RegisterInitialState());
   final RegisterRepo registerRepo;
-  void registerCubit({required String email, required String password}) async {
+  Future<void> registerCubit({required String email, required String password}) async {
     emit(RegisterLoadingState());
     var result = await registerRepo.register(email: email, password: password);
     return result.fold(

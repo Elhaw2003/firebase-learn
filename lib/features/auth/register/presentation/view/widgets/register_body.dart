@@ -127,7 +127,9 @@ class _RegisterBodyState extends State<RegisterBody> {
                     alignment: Alignment.center,
                     child: RichTextWidget(
                         onTap: () {
-                          Navigator.pop(context);
+                          Navigator.pushReplacement(context, MaterialPageRoute(builder: (c){
+                            return const LoginScreen();
+                          }));
                         },
                         firstText: AppTexts.alreadyHaveAnAccount,
                         secondText: AppTexts.loginNow),

@@ -31,6 +31,7 @@ abstract class AppTexts{
   static const String sendCode = "Send Code";
   static const String ok = "Ok";
   static const String didNotReceivedCode = "Didn’t received code?";
+  static const String loginWithGoogle = "Login with Google";
   static const String resend = "Resend";
   static const String verify = "Verify";
   static const String rememberPassword = "Remember Password?";
