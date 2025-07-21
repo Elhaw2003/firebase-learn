@@ -1,6 +1,7 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_learn/core/widgets/custom_awesom_dialog_method.dart';
+import 'package:firebase_learn/features/auth/login/presentation/controller/cubit/forgot_password/forgot_password_firebase_cubit.dart';
 import 'package:firebase_learn/features/auth/login/presentation/controller/cubit/login_with_email_and_password/login_with_email_and_password_cubit.dart';
 import 'package:firebase_learn/features/auth/login/presentation/controller/cubit/login_with_google/login_with_google_cubit.dart';
 import 'package:firebase_learn/features/auth/login/presentation/view/widgets/collection_social_icon_widget.dart';
@@ -33,7 +34,6 @@ class _LoginBodyState extends State<LoginBody> {
   final formKey = GlobalKey<FormState>();
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
-
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -66,7 +66,6 @@ class _LoginBodyState extends State<LoginBody> {
                       if (state is LoginWithEmailAndPasswordFailureState) {
                         CustomAwesomDialogMethod.awesomeDialog(
                             btnOkOnPress: () {
-                              Navigator.pop(context);
                             },
                             context: context,
                             title: "Error",
@@ -96,13 +95,38 @@ class _LoginBodyState extends State<LoginBody> {
                       } else if (state is LoginWithGoogleFailureState) {
                         CustomAwesomDialogMethod.awesomeDialog(
                             btnOkOnPress: () {
-                              Navigator.pop(context);
                             },
                             context: context,
                             title: "Error",
                             desc: state.message,
                             dialogType: DialogType.error,
                             btnOkColor: AppColors.red);
+                      }
+                    },
+                  ),
+                  BlocListener<ForgotPasswordFirebaseCubit, ForgotPasswordFirebaseState>(
+                    listener: (context, state) {
+                      if (state is ForgotPasswordFirebaseLoadingState) {
+                        LoadingShowDialogMethod.showLoadingDialog(context);
+                      } else if (state is ForgotPasswordFirebaseSuccessState) {
+                        CustomAwesomDialogMethod.awesomeDialog(
+                            context: context,
+                            title: "Success",
+                            desc: AppTexts.verifyYourEmailForChangePassword,
+                            dialogType: DialogType.success,
+                            btnOkColor: AppColors.green,
+                            btnOkOnPress: () {
+                            });
+                      } else if (state is ForgotPasswordFirebaseFailureState) {
+                        CustomAwesomDialogMethod.awesomeDialog(
+                            btnOkOnPress: () {
+                            },
+                            context: context,
+                            title: "Error",
+                            desc: state.message,
+                            dialogType: DialogType.error,
+                            btnOkColor: AppColors.red
+                        );
                       }
                     },
                   ),
@@ -143,7 +167,22 @@ class _LoginBodyState extends State<LoginBody> {
                     Align(
                       alignment: Alignment.centerRight,
                       child: ForgotPasswordWidget(
-                        onPressed: () {},
+                        onPressed: () {
+                          if(emailController.text.isEmpty){
+                            CustomAwesomDialogMethod.awesomeDialog(
+                                context: context,
+                                title: "Error",
+                                desc: AppTexts.enterYourEmail,
+                                dialogType: DialogType.error,
+                                btnOkColor: AppColors.red,
+                                btnOkOnPress: () {
+                                    }
+                            );
+                          }
+                          else{
+                            context.read<ForgotPasswordFirebaseCubit>().forgotPasswordCubit(email: emailController.text.trim());
+                          }
+                          }
                       ),
                     ),
                     const HeightSpacing(height: 15),

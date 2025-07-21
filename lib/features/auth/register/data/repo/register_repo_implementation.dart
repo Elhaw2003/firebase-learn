@@ -25,10 +25,10 @@ class RegisterRepoFirebaseImplementation implements RegisterRepo{
         return left(FirebaseFailure(message: AppTexts.emailIsAlreadyInUse));
       }
       else{
-        return left(FirebaseFailure(message: "Ops something went wrong....."));
+        return left(FirebaseFailure(message: AppTexts.exceptionFirebaseError));
       }
     } catch (e) {
-      return left(FirebaseFailure(message: "Ops something went wrong....."));
+      return left(FirebaseFailure(message: AppTexts.exceptionFirebaseError));
     }
   }
 }

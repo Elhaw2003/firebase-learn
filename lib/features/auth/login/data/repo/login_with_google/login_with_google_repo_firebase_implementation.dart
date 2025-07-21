@@ -35,7 +35,7 @@ class LoginWithGoogleRepoFirebaseImplementation implements LoginWithGoogleRepo {
     } on SocketException {
       return left(FirebaseFailure(message: AppTexts.noInternetConnection));
     } catch (e) {
-      return left(FirebaseFailure(message: "Ops something went wrong....."));
+      return left(FirebaseFailure(message: AppTexts.exceptionFirebaseError));
     }
   }
 }

@@ -57,7 +57,6 @@ class _RegisterBodyState extends State<RegisterBody> {
               } else if (state is RegisterFailureState) {
                 CustomAwesomDialogMethod.awesomeDialog(
                     btnOkOnPress: (){
-                      Navigator.pop(context);
                     },
                     context: context,
                     title: "Error",

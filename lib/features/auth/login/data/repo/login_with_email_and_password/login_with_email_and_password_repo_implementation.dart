@@ -36,7 +36,7 @@ class LoginWithEmailAndPasswordRepoFirebaseImplementation implements LoginWithEm
       }
     } catch (e) {
       print(e.toString());
-      return left(FirebaseFailure(message: "Ops something went wrong....."));
+      return left(FirebaseFailure(message: AppTexts.exceptionFirebaseError));
     }
   }
 }

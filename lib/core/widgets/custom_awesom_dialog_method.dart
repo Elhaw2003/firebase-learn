@@ -13,6 +13,7 @@ class CustomAwesomDialogMethod {
   }
   ) {
      AwesomeDialog(
+
         context: context,
         dialogType: dialogType,
         animType: AnimType.scale,

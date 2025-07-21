@@ -38,5 +38,7 @@ abstract class AppTexts{
   static const String loginSuccessfully = "Login Successfully....";
   static const String forGotDescription = """Don't worry! It occurs. Please enter the email address linked with your account.""";
   static const String otpDescription = """Enter the verification code we just sent on your email address.""";
+  static const String exceptionFirebaseError = "Oops something went wrong please try again later";
+  static const String verifyYourEmailForChangePassword = "Verify your email for change password by link was sent, if you not found... look to spam";
   static const String home = "Home";
 }
