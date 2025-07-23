@@ -16,4 +16,5 @@ class AppColors{
   static const Color textFieldColor = Color(0xffF7F8F9);
   static const Color dropDownColor = Color(0xffB9C4FF);
   static const Color green = Colors.green;
+  static const Color yellow = Colors.yellow;
 }

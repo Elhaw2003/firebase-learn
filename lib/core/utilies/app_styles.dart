@@ -8,7 +8,7 @@ class AppStyles{
   static  TextStyle primaryHeadLineStyle = TextStyle(
     color: AppColors.primaryColor,
     fontWeight: FontWeight.w700,
-    fontSize: 30.sp
+    fontSize: 20.sp
   );
   static  TextStyle subTitlesStyle = TextStyle(
     color: AppColors.secondaryColor,
