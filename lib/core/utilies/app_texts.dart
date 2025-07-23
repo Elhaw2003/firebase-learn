@@ -47,4 +47,5 @@ abstract class AppTexts{
   static const String exceptionFirebaseError = "Oops something went wrong please try again later";
   static const String verifyYourEmailForChangePassword = "Verify your email for change password by link was sent, if you not found... look to spam";
   static const String home = "Home";
+  static const String addedCategorySuccessfully = "Added Category Successfully..";
 }

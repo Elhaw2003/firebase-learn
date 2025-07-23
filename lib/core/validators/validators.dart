@@ -1,3 +1,5 @@
+import 'package:firebase_learn/core/utilies/app_texts.dart';
+
 class MyValidators {
   static String? displayNameValidator(String? displayName) {
     if (displayName == null || displayName.isEmpty) {
@@ -44,6 +46,11 @@ class MyValidators {
     // if (value.length < 8) {
     //   return 'Password must be at least 8 characters long';
     // }
+    return null;
+  }static String? addedCategoryValidator(String? value) {
+    if (value!.isEmpty) {
+      return AppTexts.fillThisField;
+    }
     return null;
   }
 
