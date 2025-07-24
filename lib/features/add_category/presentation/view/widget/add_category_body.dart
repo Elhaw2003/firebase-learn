@@ -13,6 +13,7 @@ import '../../../../../core/utilies/app_texts.dart';
 import '../../../../../core/widgets/custom_button_widget.dart';
 import '../../../../../core/widgets/custom_text_field_widget.dart';
 import '../../../../../core/widgets/spacing_widget.dart';
+import '../../../../home/presentation/view/home_screen.dart';
 
 class AddCategoryBody extends StatelessWidget {
   const AddCategoryBody({super.key, required this.categoryController, required this.formState});
@@ -34,6 +35,9 @@ class AddCategoryBody extends StatelessWidget {
               btnOkColor: AppColors.green,
               btnOkOnPress: (){
                 Navigator.pop(context);
+                Navigator.pushReplacement(context, MaterialPageRoute(builder: (c){
+                  return const HomeScreen();
+                }));
               }
           );
         }else if (state is AddCategoryFailureState) {
