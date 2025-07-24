@@ -27,6 +27,7 @@ class AddCategoryBody extends StatelessWidget {
         if (state is AddCategoryLoadingState) {
           LoadingShowDialogMethod.showLoadingDialog(context);
         } else if (state is AddCategorySuccessState) {
+          Navigator.of(context, rootNavigator: true).pop();
           CustomAwesomDialogMethod.awesomeDialog(
               context: context,
               title: "Success",
@@ -34,20 +35,19 @@ class AddCategoryBody extends StatelessWidget {
               dialogType: DialogType.success,
               btnOkColor: AppColors.green,
               btnOkOnPress: (){
-                Navigator.pop(context);
                 Navigator.pushReplacement(context, MaterialPageRoute(builder: (c){
                   return const HomeScreen();
                 }));
               }
           );
         }else if (state is AddCategoryFailureState) {
+          Navigator.of(context, rootNavigator: true).pop();
           CustomAwesomDialogMethod.awesomeDialog(
+            autoHide: const Duration(seconds: 3),
               context: context,
               title: "Error",
               desc: state.message,
               dialogType: DialogType.error,
-              btnOkColor: AppColors.red,
-              btnOkOnPress: (){}
           );
         }
       },
@@ -74,7 +74,9 @@ class AddCategoryBody extends StatelessWidget {
                    CustomButtonWidget(
                       onPressed: (){
                         if(formState.currentState!.validate()){
-                          context.read<AddCategoryCubit>().addCategoryCubit(categoryModel: CategoryModel(categoryName: categoryController.text.trim()));
+                          context.read<AddCategoryCubit>().addCategoryCubit(categoryModel: CategoryModel(
+                              categoryName: categoryController.text.trim(),
+                          ));
                         }
                       },
                       title: AppTexts.addCategory,

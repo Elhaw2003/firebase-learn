@@ -9,13 +9,15 @@ class CustomAwesomDialogMethod {
     required String title,
     required String desc,
     required DialogType dialogType,
-    required Color btnOkColor,
+     Color? btnOkColor,
     void Function()? btnOkOnPress,
     void Function()? cancelOnPress,
+        Duration? autoHide
   }
   ) {
      AwesomeDialog(
         context: context,
+        autoHide: autoHide,
         dialogType: dialogType,
         animType: AnimType.scale,
         title: title,

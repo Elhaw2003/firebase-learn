@@ -41,6 +41,7 @@ class _RegisterBodyState extends State<RegisterBody> {
               if (state is RegisterLoadingState) {
                 LoadingShowDialogMethod.showLoadingDialog(context);
               } else if (state is RegisterSuccessState) {
+                Navigator.of(context, rootNavigator: true).pop();
                 CustomAwesomDialogMethod.awesomeDialog(
                     context: context,
                     title: "Success",
@@ -55,14 +56,14 @@ class _RegisterBodyState extends State<RegisterBody> {
                     }
                 );
               } else if (state is RegisterFailureState) {
+                Navigator.of(context, rootNavigator: true).pop();
                 CustomAwesomDialogMethod.awesomeDialog(
-                    btnOkOnPress: (){
-                    },
+                    autoHide: const Duration(seconds: 3),
                     context: context,
                     title: "Error",
                     desc: state.message,
                     dialogType: DialogType.error,
-                    btnOkColor: AppColors.red);
+                );
               }
             },
             builder: (context, state) {

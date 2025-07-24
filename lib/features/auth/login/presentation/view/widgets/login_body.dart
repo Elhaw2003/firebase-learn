@@ -50,6 +50,7 @@ class _LoginBodyState extends State<LoginBody> {
                         LoadingShowDialogMethod.showLoadingDialog(context);
                       } else
                       if (state is LoginWithEmailAndPasswordSuccessState) {
+                        Navigator.of(context, rootNavigator: true).pop();
                         CustomAwesomDialogMethod.awesomeDialog(
                             context: context,
                             title: "Success",
@@ -64,14 +65,14 @@ class _LoginBodyState extends State<LoginBody> {
                             });
                       } else
                       if (state is LoginWithEmailAndPasswordFailureState) {
+                        Navigator.of(context, rootNavigator: true).pop();
                         CustomAwesomDialogMethod.awesomeDialog(
-                            btnOkOnPress: () {
-                            },
+                            autoHide: const Duration(seconds: 3),
                             context: context,
                             title: "Error",
                             desc: state.message,
                             dialogType: DialogType.error,
-                            btnOkColor: AppColors.red);
+                        );
                       }
                     },
                   ),
@@ -80,6 +81,7 @@ class _LoginBodyState extends State<LoginBody> {
                       if (state is LoginWithGoogleLoadingState) {
                         LoadingShowDialogMethod.showLoadingDialog(context);
                       } else if (state is LoginWithGoogleSuccessState) {
+                        Navigator.of(context, rootNavigator: true).pop();
                         CustomAwesomDialogMethod.awesomeDialog(
                             context: context,
                             title: "Success",
@@ -93,14 +95,14 @@ class _LoginBodyState extends State<LoginBody> {
                                   }));
                             });
                       } else if (state is LoginWithGoogleFailureState) {
+                        Navigator.of(context, rootNavigator: true).pop();
                         CustomAwesomDialogMethod.awesomeDialog(
-                            btnOkOnPress: () {
-                            },
                             context: context,
                             title: "Error",
                             desc: state.message,
                             dialogType: DialogType.error,
-                            btnOkColor: AppColors.red);
+                            autoHide: const Duration(seconds: 3)
+                        );
                       }
                     },
                   ),
@@ -109,23 +111,23 @@ class _LoginBodyState extends State<LoginBody> {
                       if (state is ForgotPasswordFirebaseLoadingState) {
                         LoadingShowDialogMethod.showLoadingDialog(context);
                       } else if (state is ForgotPasswordFirebaseSuccessState) {
+                        Navigator.of(context, rootNavigator: true).pop();
                         CustomAwesomDialogMethod.awesomeDialog(
                             context: context,
                             title: "Success",
                             desc: AppTexts.verifyYourEmailForChangePassword,
                             dialogType: DialogType.success,
                             btnOkColor: AppColors.green,
-                            btnOkOnPress: () {
-                            });
+                            autoHide: const Duration(seconds: 3)
+                        );
                       } else if (state is ForgotPasswordFirebaseFailureState) {
+                        Navigator.of(context, rootNavigator: true).pop();
                         CustomAwesomDialogMethod.awesomeDialog(
-                            btnOkOnPress: () {
-                            },
+                            autoHide: const Duration(seconds: 3),
                             context: context,
                             title: "Error",
                             desc: state.message,
                             dialogType: DialogType.error,
-                            btnOkColor: AppColors.red
                         );
                       }
                     },
@@ -174,9 +176,7 @@ class _LoginBodyState extends State<LoginBody> {
                                 title: "Error",
                                 desc: AppTexts.enterYourEmail,
                                 dialogType: DialogType.error,
-                                btnOkColor: AppColors.red,
-                                btnOkOnPress: () {
-                                    }
+                                autoHide: const Duration(seconds: 1),
                             );
                           }
                           else{

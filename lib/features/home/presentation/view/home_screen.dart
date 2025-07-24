@@ -5,7 +5,9 @@ import 'package:firebase_learn/core/utilies/app_texts.dart';
 import 'package:firebase_learn/core/widgets/custom_awesom_dialog_method.dart';
 import 'package:firebase_learn/features/auth/login/presentation/view/login_screen.dart';
 import 'package:firebase_learn/features/auth/widget/custom_appbar_widget.dart';
+import 'package:firebase_learn/features/home/data/repo/delete_category/delete_category_repo_firebase_implementation.dart';
 import 'package:firebase_learn/features/home/data/repo/get_categories/get_categories_repo_firebase_implementation.dart';
+import 'package:firebase_learn/features/home/presentation/controller/cubit/delete_category/delete_category_cubit.dart';
 import 'package:firebase_learn/features/home/presentation/controller/cubit/get_categories/get_categories_cubit.dart';
 import 'package:firebase_learn/features/home/presentation/view/widgets/floating_widget.dart';
 import 'package:firebase_learn/features/home/presentation/view/widgets/home_body.dart';
@@ -19,8 +21,11 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => GetCategoriesCubit(getCategoriesRepo: GetCategoriesRepoFirebaseImplementation())..getCategoriesCubit(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (context) => GetCategoriesCubit(getCategoriesRepo: GetCategoriesRepoFirebaseImplementation())..getCategoriesCubit(),),
+        BlocProvider(create: (context) => DeleteCategoryCubit(deleteCategoryRepo: DeleteCategoryRepoFirebaseImplementation()),),
+      ],
       child: Scaffold(
           backgroundColor: AppColors.white,
           floatingActionButton: FloatingWidget(

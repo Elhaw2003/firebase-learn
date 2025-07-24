@@ -9,19 +9,23 @@ class CustomFailureWidget extends StatelessWidget {
   final String message;
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        MaterialButton(
-            onPressed:onPressed,
-            color: AppColors.primaryColor,
-            child: Text("Try Again",style: AppStyles.white700wSize12Inter,),
-        ),
-        const HeightSpacing(height: 30),
-        Text(
-          message,
-          style: AppStyles.black600wSize16Inter,
-        )
-      ],
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 15),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          MaterialButton(
+              onPressed:onPressed,
+              color: AppColors.primaryColor,
+              child: Text("Try Again",style: AppStyles.white700wSize12Inter,),
+          ),
+          const HeightSpacing(height: 30),
+          Text(
+            message,
+            style: AppStyles.black600wSize16Inter,
+          )
+        ],
+      ),
     );
   }
 }

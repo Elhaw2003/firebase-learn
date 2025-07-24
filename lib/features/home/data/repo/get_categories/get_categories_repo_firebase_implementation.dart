@@ -14,10 +14,10 @@ class GetCategoriesRepoFirebaseImplementation implements GetCategoriesRepo{
   Future<Either<Failure, List<CategoryModel>>> getCategories() async{
     try{
 
-      QuerySnapshot querySnapshot = await FirebaseFirestore.instance.collection(Collections.categories).get();
+      QuerySnapshot querySnapshot = await FirebaseFirestore.instance.collection(Collections.categories).orderBy("createdAt").get();
 
       List<CategoryModel>categories = querySnapshot.docs.map((doc){
-        return CategoryModel.fromJson(doc.data() as Map<String,dynamic>);
+        return CategoryModel.fromJson(doc);
       }).toList();
       return right(categories);
     }
@@ -25,7 +25,8 @@ class GetCategoriesRepoFirebaseImplementation implements GetCategoriesRepo{
       return left(FirebaseFailure(message: AppTexts.noInternetConnection));
     }
     catch(e){
-      return left(FirebaseFailure(message: AppTexts.exceptionFirebaseError));
+      print(e.toString());
+      return left(FirebaseFailure(message: e.toString()));
     }
   }
 }

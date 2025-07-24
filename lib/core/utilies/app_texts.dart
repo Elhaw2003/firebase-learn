@@ -36,6 +36,9 @@ abstract class AppTexts{
   static const String sendCode = "Send Code";
   static const String addCategory = "Add Category";
   static const String ok = "Ok";
+  static const String success = "Success";
+  static const String error = "Error";
+  static const String warning = "Warning";
   static const String didNotReceivedCode = "Didn’t received code?";
   static const String loginWithGoogle = "Login with Google";
   static const String resend = "Resend";
@@ -48,4 +51,6 @@ abstract class AppTexts{
   static const String verifyYourEmailForChangePassword = "Verify your email for change password by link was sent, if you not found... look to spam";
   static const String home = "Home";
   static const String addedCategorySuccessfully = "Added Category Successfully..";
+  static const String deletedCategorySuccessfully = "Deleted Category Successfully..";
+  static const String noCategoriesAdded = "No Categories Added Click On Button Add";
 }
