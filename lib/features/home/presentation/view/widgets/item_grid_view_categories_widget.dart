@@ -82,7 +82,7 @@ class ItemGridViewCategoriesWidget extends StatelessWidget {
                       btnOkColor: AppColors.green,
                       cancelOnPress: () {},
                       btnOkOnPress: () {
-                        context.read<DeleteCategoryCubit>().deleteCategory(id: categoryModel.id!);
+                        context.read<DeleteCategoryCubit>().deleteCategory(id: categoryModel.categoryId!);
                       },
                     );
                   },

@@ -1,11 +1,12 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class CategoryModel {
   final String categoryName;
-  final String? id;
+  final String? categoryId;
   final DateTime? createdAt;
-
-  CategoryModel({required this.categoryName, this.id, this.createdAt});
+  final String? userId;
+  CategoryModel({required this.categoryName, this.categoryId,this.userId, this.createdAt});
 
   factory CategoryModel.fromJson(DocumentSnapshot doc) {
     final json = doc.data() as Map<String, dynamic>;
@@ -25,7 +26,8 @@ class CategoryModel {
     }
 
     return CategoryModel(
-      id: doc.id,
+      categoryId: doc.id,
+      userId: json["userId"],
       categoryName: json["categoryName"] ?? '',
       createdAt: parsedCreatedAt, // هنا القيمة DateTime مش Timestam
     );
@@ -35,6 +37,7 @@ class CategoryModel {
     return {
       "categoryName": categoryName,
       "createdAt": createdAt ?? FieldValue.serverTimestamp(),
+      "userId": FirebaseAuth.instance.currentUser!.uid,
     };
   }
 }
