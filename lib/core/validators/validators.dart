@@ -47,7 +47,14 @@ class MyValidators {
     //   return 'Password must be at least 8 characters long';
     // }
     return null;
-  }static String? addedCategoryValidator(String? value) {
+  }
+  static String? addedCategoryValidator(String? value) {
+    if (value!.isEmpty) {
+      return AppTexts.fillThisField;
+    }
+    return null;
+  }
+  static String? editedCategoryValidator(String? value) {
     if (value!.isEmpty) {
       return AppTexts.fillThisField;
     }

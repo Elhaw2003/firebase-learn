@@ -17,6 +17,7 @@ abstract class AppTexts{
   static const String homePage = "Home Page";
   static const String enterRightPassword = "Enter Right Password";
   static const String userName = "Username";
+  static const String updateCategory = "Update Category";
   static const String email = "Email";
   static const String cancel = "Cancel";
   static const String password = "Password";
@@ -50,7 +51,9 @@ abstract class AppTexts{
   static const String exceptionFirebaseError = "Oops something went wrong please try again later";
   static const String verifyYourEmailForChangePassword = "Verify your email for change password by link was sent, if you not found... look to spam";
   static const String home = "Home";
+  static const String update = "Update";
   static const String addedCategorySuccessfully = "Added Category Successfully..";
   static const String deletedCategorySuccessfully = "Deleted Category Successfully..";
+  static const String updateCategorySuccessfully = "Update Category Successfully..";
   static const String noCategoriesAdded = "No Categories Added Click On Button Add";
 }

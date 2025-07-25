@@ -15,6 +15,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import '../../../add_category/presentation/view/add_category_screen.dart';
+import '../../../update_category/data/repo/update_category_name_repo_firebase_implementation.dart';
+import '../../../update_category/presentation/controller/cubit/update_category_name_cubit.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
