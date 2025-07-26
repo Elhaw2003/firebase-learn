@@ -16,7 +16,7 @@ class ItemGridViewWidget extends StatelessWidget {
       highlightColor: Colors.transparent,
       onTap: (){
         Navigator.push(context, MaterialPageRoute(builder: (c){
-          return const NoteScreen();
+          return  NoteScreen(categoryId: categoryModel.categoryId!,);
         }));
       },
       child: Card(

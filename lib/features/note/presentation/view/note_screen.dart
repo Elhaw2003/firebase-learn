@@ -7,8 +7,8 @@ import '../../../auth/widget/arrow_appbar_widget.dart';
 import '../../../auth/widget/custom_appbar_widget.dart';
 
 class NoteScreen extends StatelessWidget {
-  const NoteScreen({super.key});
-
+  const NoteScreen({super.key, required this.categoryId});
+  final String categoryId;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,7 +17,7 @@ class NoteScreen extends StatelessWidget {
         child: FloatingWidget(
           onPressed: (){
             Navigator.push(context, MaterialPageRoute(builder: (c){
-              return const AddNoteScreen();
+              return  AddNoteScreen(categoryId: categoryId,);
             }));
           },
         ),
