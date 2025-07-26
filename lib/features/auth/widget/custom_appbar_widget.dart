@@ -13,6 +13,7 @@ class CustomAppbarWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      surfaceTintColor: Colors.transparent,
       centerTitle: true,
       automaticallyImplyLeading: false,
       backgroundColor: AppColors.borderTextFieldColor,

@@ -1,5 +1,5 @@
 import 'package:firebase_learn/features/add_category/data/model/category_model.dart';
-import 'package:firebase_learn/features/home/presentation/view/widgets/item_grid_view_categories_widget.dart';
+import 'package:firebase_learn/features/home/presentation/view/widgets/item_stack_grid_view_categories_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
@@ -31,7 +31,7 @@ class GridViewNoteWidget extends StatelessWidget {
           child: SlideAnimation(
             verticalOffset: 200.0,
             child: FadeInAnimation(
-              child: ItemGridViewCategoriesWidget(categoryModel: categories[index],),
+              child: ItemStackGridViewCategoriesWidget(categoryModel: categories[index],),
             ),
           ),
         );

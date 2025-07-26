@@ -5,16 +5,47 @@ import 'package:firebase_learn/features/auth/register/presentation/view/widgets/
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class RegisterScreen extends StatelessWidget {
+class RegisterScreen extends StatefulWidget {
   const RegisterScreen({super.key});
+
+  @override
+  State<RegisterScreen> createState() => _RegisterScreenState();
+}
+
+class _RegisterScreenState extends State<RegisterScreen> {
+
+  bool obscureText = true;
+  final formKey = GlobalKey<FormState>();
+  TextEditingController userNameController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+
+  @override
+ void dispose() {
+    userNameController.dispose();
+    emailController.dispose();
+    passwordController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => RegisterCubit(registerRepo: RegisterRepoFirebaseImplementation()),
-      child: const Scaffold(
+      child:  Scaffold(
         backgroundColor: AppColors.white,
-        body: RegisterBody(),
+        body: RegisterBody(
+          obscureText: obscureText,
+          formKey: formKey,
+          userNameController: userNameController,
+          emailController: emailController,
+          passwordController: passwordController,
+          onPressed: (){
+            setState(() {
+              obscureText = !obscureText;
+            });
+          },
+        ),
       ),
     );
   }

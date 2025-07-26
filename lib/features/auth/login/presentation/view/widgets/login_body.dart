@@ -1,39 +1,33 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_learn/core/widgets/custom_awesom_dialog_method.dart';
-import 'package:firebase_learn/features/auth/login/presentation/controller/cubit/forgot_password/forgot_password_firebase_cubit.dart';
-import 'package:firebase_learn/features/auth/login/presentation/controller/cubit/login_with_email_and_password/login_with_email_and_password_cubit.dart';
-import 'package:firebase_learn/features/auth/login/presentation/controller/cubit/login_with_google/login_with_google_cubit.dart';
-import 'package:firebase_learn/features/auth/login/presentation/view/widgets/collection_social_icon_widget.dart';
-import 'package:firebase_learn/features/auth/login/presentation/view/widgets/forgot_password_widget.dart';
-import 'package:firebase_learn/features/auth/register/presentation/view/register_screen.dart';
-import 'package:firebase_learn/features/home/presentation/view/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import '../../../../../../core/utilies/app_colors.dart';
 import '../../../../../../core/utilies/app_texts.dart';
 import '../../../../../../core/validators/validators.dart';
+import '../../../../../../core/widgets/custom_awesom_dialog_method.dart';
 import '../../../../../../core/widgets/custom_button_widget.dart';
 import '../../../../../../core/widgets/custom_text_field_widget.dart';
 import '../../../../../../core/widgets/loading_show_dialog_method.dart';
 import '../../../../../../core/widgets/spacing_widget.dart';
 import '../../../../../../generated/assets.dart';
+import '../../../../../home/presentation/view/home_screen.dart';
+import '../../../../register/presentation/view/register_screen.dart';
 import '../../../../widget/or_login_register_widget.dart';
 import '../../../../widget/rich_text_widget.dart';
+import '../../controller/cubit/forgot_password/forgot_password_firebase_cubit.dart';
+import '../../controller/cubit/login_with_email_and_password/login_with_email_and_password_cubit.dart';
+import '../../controller/cubit/login_with_google/login_with_google_cubit.dart';
+import 'forgot_password_widget.dart';
 
-class LoginBody extends StatefulWidget {
-  const LoginBody({super.key});
-
-  @override
-  State<LoginBody> createState() => _LoginBodyState();
-}
-
-class _LoginBodyState extends State<LoginBody> {
-  bool obscureText = true;
-  final formKey = GlobalKey<FormState>();
-  TextEditingController emailController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
+class LoginBody extends StatelessWidget {
+  const LoginBody({super.key, required this.formKey, required this.emailController, required this.passwordController, required this.obscureText, required this.onPressed});
+  final GlobalKey<FormState> formKey;
+  final TextEditingController emailController;
+  final TextEditingController passwordController;
+  final bool obscureText;
+  final void Function() onPressed;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -67,11 +61,11 @@ class _LoginBodyState extends State<LoginBody> {
                       if (state is LoginWithEmailAndPasswordFailureState) {
                         Navigator.of(context, rootNavigator: true).pop();
                         CustomAwesomDialogMethod.awesomeDialog(
-                            autoHide: const Duration(seconds: 3),
-                            context: context,
-                            title: "Error",
-                            desc: state.message,
-                            dialogType: DialogType.error,
+                          autoHide: const Duration(seconds: 3),
+                          context: context,
+                          title: "Error",
+                          desc: state.message,
+                          dialogType: DialogType.error,
                         );
                       }
                     },
@@ -123,11 +117,11 @@ class _LoginBodyState extends State<LoginBody> {
                       } else if (state is ForgotPasswordFirebaseFailureState) {
                         Navigator.of(context, rootNavigator: true).pop();
                         CustomAwesomDialogMethod.awesomeDialog(
-                            autoHide: const Duration(seconds: 3),
-                            context: context,
-                            title: "Error",
-                            desc: state.message,
-                            dialogType: DialogType.error,
+                          autoHide: const Duration(seconds: 3),
+                          context: context,
+                          title: "Error",
+                          desc: state.message,
+                          dialogType: DialogType.error,
                         );
                       }
                     },
@@ -153,11 +147,7 @@ class _LoginBodyState extends State<LoginBody> {
                       hintText: AppTexts.enterYourPassword,
                       obscureText: obscureText,
                       suffixIcon: IconButton(
-                          onPressed: () {
-                            setState(() {
-                              obscureText = !obscureText;
-                            });
-                          },
+                          onPressed: onPressed,
                           icon: Icon(
                             Icons.visibility,
                             color: obscureText
@@ -169,19 +159,19 @@ class _LoginBodyState extends State<LoginBody> {
                     Align(
                       alignment: Alignment.centerRight,
                       child: ForgotPasswordWidget(
-                        onPressed: () {
-                          if(emailController.text.isEmpty){
-                            CustomAwesomDialogMethod.awesomeDialog(
+                          onPressed: () {
+                            if(emailController.text.isEmpty){
+                              CustomAwesomDialogMethod.awesomeDialog(
                                 context: context,
                                 title: "Error",
                                 desc: AppTexts.enterYourEmail,
                                 dialogType: DialogType.error,
                                 autoHide: const Duration(seconds: 1),
-                            );
-                          }
-                          else{
-                            context.read<ForgotPasswordFirebaseCubit>().forgotPasswordCubit(email: emailController.text.trim());
-                          }
+                              );
+                            }
+                            else{
+                              context.read<ForgotPasswordFirebaseCubit>().forgotPasswordCubit(email: emailController.text.trim());
+                            }
                           }
                       ),
                     ),

@@ -31,6 +31,14 @@ class _UpdateCategoryScreenState extends State<UpdateCategoryScreen> {
   }
 
   @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    categoryController.dispose();
+  }
+
+
+  @override
   Widget build(BuildContext context) {
     return BlocProvider(
   create: (context) => UpdateCategoryNameCubit(updateCategoryNameRepo: UpdateCategoryNameRepoFirebaseImplementation()),

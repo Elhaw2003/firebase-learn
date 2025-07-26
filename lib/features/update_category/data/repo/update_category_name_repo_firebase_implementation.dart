@@ -23,3 +23,11 @@ class UpdateCategoryNameRepoFirebaseImplementation implements UpdateCategoryName
 
   }
 }
+// set => add ===========> documentId not found
+// set => update ===========> documentId found
+// set => {
+//   merge == false ============> field is deleted  because it delete userId
+//
+//   merge == true ============> field not deleted  ==> (update)
+//
+// }

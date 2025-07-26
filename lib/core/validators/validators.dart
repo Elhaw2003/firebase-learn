@@ -54,6 +54,18 @@ class MyValidators {
     }
     return null;
   }
+  static String? addedNoteValidator(String? value) {
+    if (value!.isEmpty) {
+      return AppTexts.fillThisField;
+    }
+    return null;
+  }
+  static String? addedDescriptionNoteValidator(String? value) {
+    if (value!.isEmpty) {
+      return AppTexts.fillThisField;
+    }
+    return null;
+  }
   static String? editedCategoryValidator(String? value) {
     if (value!.isEmpty) {
       return AppTexts.fillThisField;

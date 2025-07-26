@@ -15,20 +15,14 @@ import '../../../../../../core/widgets/spacing_widget.dart';
 import '../../../../login/presentation/view/login_screen.dart';
 import '../../../../widget/rich_text_widget.dart';
 
-class RegisterBody extends StatefulWidget {
-  const RegisterBody({super.key});
-
-  @override
-  State<RegisterBody> createState() => _RegisterBodyState();
-}
-
-class _RegisterBodyState extends State<RegisterBody> {
-  bool obscureText = true;
-  final formKey = GlobalKey<FormState>();
-  TextEditingController userNameController = TextEditingController();
-  TextEditingController emailController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
-
+class RegisterBody extends StatelessWidget {
+  const RegisterBody({super.key, required this.obscureText, required this.userNameController, required this.emailController, required this.passwordController, this.onPressed, required this.formKey});
+  final bool obscureText;
+  final GlobalKey<FormState> formKey;
+  final TextEditingController userNameController;
+  final TextEditingController emailController;
+  final TextEditingController passwordController;
+  final void Function()? onPressed;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -97,11 +91,7 @@ class _RegisterBodyState extends State<RegisterBody> {
                     hintText: AppTexts.enterYourPassword,
                     obscureText: obscureText,
                     suffixIcon: IconButton(
-                        onPressed: () {
-                          setState(() {
-                            obscureText = !obscureText;
-                          });
-                        },
+                        onPressed: onPressed,
                         icon: Icon(
                           Icons.visibility,
                           color: obscureText

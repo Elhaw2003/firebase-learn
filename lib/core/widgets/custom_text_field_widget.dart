@@ -4,15 +4,19 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../utilies/app_colors.dart';
 
 class CustomTextFieldWidget extends StatelessWidget {
-  const CustomTextFieldWidget({super.key, required this.hintText, this.suffixIcon,this.obscureText, required this.controller, this.validator});
+  const CustomTextFieldWidget({super.key, required this.hintText, this.suffixIcon,this.obscureText, required this.controller, this.validator,this.minLines=1,this.maxLines=1});
   final String hintText;
   final String? Function(String?)? validator;
   final TextEditingController controller;
   final Widget? suffixIcon;
   final bool? obscureText;
+  final int? minLines;
+  final int? maxLines;
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      minLines: minLines,
+      maxLines: maxLines,
       validator: validator,
       controller: controller,
       obscureText: obscureText?? false,
