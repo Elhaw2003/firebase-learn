@@ -7,8 +7,8 @@ import 'package:flutter/material.dart';
 import '../../../../../core/utilies/app_colors.dart';
 import '../../../../../core/widgets/custom_awesom_dialog_method.dart';
 
-class CustomEditCategoryButtonWidget extends StatelessWidget {
-  const CustomEditCategoryButtonWidget({super.key,  this.onPressed});
+class CustomEditButtonWidget extends StatelessWidget {
+  const CustomEditButtonWidget({super.key,  this.onPressed});
   final void Function()? onPressed;
   @override
   Widget build(BuildContext context) {

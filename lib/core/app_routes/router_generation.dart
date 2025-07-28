@@ -33,6 +33,7 @@ import '../../features/note/presentation/controller/cubit/get_notes/get_notes_cu
 import '../../features/note/presentation/view/note_screen.dart';
 import '../../features/update_category/data/repo/update_category_name_repo_firebase_implementation.dart';
 import '../../features/update_category/presentation/controller/cubit/update_category_name_cubit.dart';
+import '../../features/update_note/presentation/view/update_note_screen.dart';
 class RouterGenerator {
    static  GoRouter routerGeneration = GoRouter(
     initialLocation: FirebaseAuth.instance.currentUser != null && FirebaseAuth.instance.currentUser!.emailVerified   ? AppRoutes.homeScreen : AppRoutes.loginScreen,
@@ -121,6 +122,14 @@ class RouterGenerator {
           return BlocProvider(create: (context) => AddNoteCubit(addNoteRepo: AddNoteRepoFirebaseImplementation()), child:  AddNoteScreen(categoryId: categoryId,));
         },
       ),
+      /// ---------------- Update Note ----------------
+      GoRoute(
+        path: AppRoutes.updateNoteScreen,
+        name: AppRoutes.updateNoteScreen,
+        builder: (context, state) {
+          return const UpdateNoteScreen();
+        }
+      )
     ],
   );
 }

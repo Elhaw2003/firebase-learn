@@ -52,6 +52,7 @@ abstract class AppTexts{
   static const String verifyYourEmailForChangePassword = "Verify your email for change password by link was sent, if you not found... look to spam";
   static const String home = "Home";
   static const String update = "Update";
+  static const String updateNote = "Update Note";
   static const String notesScreen = "Notes Screen";
   static const String enterYourNote = "Enter Your Note";
   static const String enterDescription = "Enter Description";

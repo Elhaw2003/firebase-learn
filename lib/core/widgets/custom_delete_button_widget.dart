@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import '../../../../../core/utilies/app_colors.dart';
 
-class CustomDeleteCategoryButtonWidget extends StatelessWidget {
-  const CustomDeleteCategoryButtonWidget({super.key, this.onPressed});
+class CustomDeleteButtonWidget extends StatelessWidget {
+  const CustomDeleteButtonWidget({super.key, this.onPressed});
 
   final void Function()? onPressed;
 

@@ -6,5 +6,6 @@ class AppRoutes {
   static const String updateCategoryScreen = '/updateCategoryScreen';
   static const String noteScreen = '/noteScreen';
   static const String addNoteScreen = '/addNoteScreen';
+  static const String updateNoteScreen = '/updateNoteScreen';
 
 }

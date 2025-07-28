@@ -1,6 +1,6 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:firebase_learn/core/app_routes/app_routes.dart';
-import 'package:firebase_learn/core/widgets/custom_edit_category_button_widget.dart';
+import 'package:firebase_learn/core/widgets/custom_edit_button_widget.dart';
 import 'package:firebase_learn/features/add_category/data/model/category_model.dart';
 import 'package:firebase_learn/features/home/presentation/view/widgets/item_grid_view_widget.dart';
 import 'package:flutter/material.dart';
@@ -11,7 +11,7 @@ import '../../../../../core/utilies/app_colors.dart';
 import '../../../../../core/utilies/app_styles.dart';
 import '../../../../../core/utilies/app_texts.dart';
 import '../../../../../core/widgets/custom_awesom_dialog_method.dart';
-import '../../../../../core/widgets/custom_delete_category_button_widget.dart';
+import '../../../../../core/widgets/custom_delete_button_widget.dart';
 import '../../../../../core/widgets/loading_show_dialog_method.dart';
 import '../../controller/cubit/delete_category/delete_category_cubit.dart';
 import '../../controller/cubit/get_categories/get_categories_cubit.dart';
@@ -55,7 +55,7 @@ class ItemStackGridViewCategoriesWidget extends StatelessWidget {
               }
             },
             builder: (context, state) {
-              return CustomDeleteCategoryButtonWidget(
+              return CustomDeleteButtonWidget(
                 onPressed: () {
                   CustomAwesomDialogMethod.awesomeDialog(
                     context: context,
@@ -79,7 +79,7 @@ class ItemStackGridViewCategoriesWidget extends StatelessWidget {
         Positioned(
             top: 10,
             left: 10,
-            child: CustomEditCategoryButtonWidget(
+            child: CustomEditButtonWidget(
               onPressed: () {
                 CustomAwesomDialogMethod.awesomeDialog(
                   context: context,
