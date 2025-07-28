@@ -5,6 +5,7 @@ import 'package:firebase_learn/features/auth/widget/custom_appbar_widget.dart';
 import 'package:firebase_learn/features/update_category/presentation/view/widget/update_category_body.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../data/repo/update_category_name_repo_firebase_implementation.dart';
 import '../controller/cubit/update_category_name_cubit.dart';
@@ -27,7 +28,6 @@ class _UpdateCategoryScreenState extends State<UpdateCategoryScreen> {
   initState() {
     super.initState();
     categoryController.text = widget.oldName;
-    setState(() {});
   }
 
   @override
@@ -40,19 +40,15 @@ class _UpdateCategoryScreenState extends State<UpdateCategoryScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-  create: (context) => UpdateCategoryNameCubit(updateCategoryNameRepo: UpdateCategoryNameRepoFirebaseImplementation()),
-  child: Scaffold(
-      backgroundColor: AppColors.white,
-      appBar: AppBar(
-        leading: const SizedBox(),
-        flexibleSpace: const CustomAppbarWidget(
-          title: AppTexts.updateCategory,
-          leading: ArrowAppbarWidget(),
+    return Scaffold(
+        backgroundColor: AppColors.white,
+        appBar: AppBar(
+          leading:  ArrowAppbarWidget(onPressed: (){GoRouter.of(context).pop(true);},),
+          flexibleSpace: const CustomAppbarWidget(
+            title: AppTexts.updateCategory,
+          ),
         ),
-      ),
-      body: UpdateCategoryBody(categoryController: categoryController,formState: formSate,oldName: widget.oldName,categoryId: widget.categoryId,),
-    ),
-);
+        body: UpdateCategoryBody(categoryController: categoryController,formState: formSate,oldName: widget.oldName,categoryId: widget.categoryId,),
+      );
   }
 }

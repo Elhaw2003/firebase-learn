@@ -30,22 +30,19 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => RegisterCubit(registerRepo: RegisterRepoFirebaseImplementation()),
-      child:  Scaffold(
-        backgroundColor: AppColors.white,
-        body: RegisterBody(
-          obscureText: obscureText,
-          formKey: formKey,
-          userNameController: userNameController,
-          emailController: emailController,
-          passwordController: passwordController,
-          onPressed: (){
-            setState(() {
-              obscureText = !obscureText;
-            });
-          },
-        ),
+    return Scaffold(
+      backgroundColor: AppColors.white,
+      body: RegisterBody(
+        obscureText: obscureText,
+        formKey: formKey,
+        userNameController: userNameController,
+        emailController: emailController,
+        passwordController: passwordController,
+        onPressed: (){
+          setState(() {
+            obscureText = !obscureText;
+          });
+        },
       ),
     );
   }

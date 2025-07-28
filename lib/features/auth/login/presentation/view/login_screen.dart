@@ -33,34 +33,18 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider(
-            create: (context) => LoginWithEmailAndPasswordCubit(
-                loginRepo:
-                    LoginWithEmailAndPasswordRepoFirebaseImplementation())),
-        BlocProvider(
-            create: (context) => LoginWithGoogleCubit(
-                loginWithGoogleRepo:
-                    LoginWithGoogleRepoFirebaseImplementation())),
-        BlocProvider(
-            create: (context) => ForgotPasswordFirebaseCubit(
-                forgotPasswordRepo:
-                    ForgotPasswordRepoFirebaseImplementation())),
-      ],
-      child: Scaffold(
-        backgroundColor: AppColors.white,
-        body: LoginBody(
-          formKey: formKey,
-          emailController: emailController,
-          passwordController: passwordController,
-          obscureText: obscureText,
-          onPressed: () {
-            setState(() {
-              obscureText = !obscureText;
-            });
-          },
-        ),
+    return Scaffold(
+      backgroundColor: AppColors.white,
+      body: LoginBody(
+        formKey: formKey,
+        emailController: emailController,
+        passwordController: passwordController,
+        obscureText: obscureText,
+        onPressed: () {
+          setState(() {
+            obscureText = !obscureText;
+          });
+        },
       ),
     );
   }

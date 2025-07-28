@@ -7,6 +7,7 @@ import 'package:firebase_learn/features/add_category/presentation/controller/cub
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../../../core/utilies/app_colors.dart';
 import '../../../../../core/utilies/app_texts.dart';
@@ -35,9 +36,7 @@ class AddCategoryBody extends StatelessWidget {
               dialogType: DialogType.success,
               btnOkColor: AppColors.green,
               btnOkOnPress: (){
-                Navigator.pushReplacement(context, MaterialPageRoute(builder: (c){
-                  return const HomeScreen();
-                }));
+                GoRouter.of(context).pop(true);
               }
           );
         }else if (state is AddCategoryFailureState) {

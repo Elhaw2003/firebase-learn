@@ -1,11 +1,13 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_learn/core/app_routes/app_routes.dart';
 import 'package:firebase_learn/core/widgets/custom_awesom_dialog_method.dart';
 import 'package:firebase_learn/core/widgets/loading_show_dialog_method.dart';
 import 'package:firebase_learn/features/auth/register/presentation/controller/cubit/register_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 import '../../../../../../core/utilies/app_colors.dart';
 import '../../../../../../core/utilies/app_texts.dart';
 import '../../../../../../core/validators/validators.dart';
@@ -44,9 +46,7 @@ class RegisterBody extends StatelessWidget {
                     btnOkColor: AppColors.green,
                     btnOkOnPress: () {
                       FirebaseAuth.instance.currentUser!.sendEmailVerification();
-                      Navigator.pushReplacement(context, MaterialPageRoute(builder: (c){
-                        return const LoginScreen();
-                      }));
+                      GoRouter.of(context).pushReplacementNamed(AppRoutes.loginScreen);
                     }
                 );
               } else if (state is RegisterFailureState) {
@@ -117,9 +117,7 @@ class RegisterBody extends StatelessWidget {
                     alignment: Alignment.center,
                     child: RichTextWidget(
                         onTap: () {
-                          Navigator.pushReplacement(context, MaterialPageRoute(builder: (c){
-                            return const LoginScreen();
-                          }));
+                          GoRouter.of(context).pushReplacementNamed(AppRoutes.loginScreen);
                         },
                         firstText: AppTexts.alreadyHaveAnAccount,
                         secondText: AppTexts.loginNow),

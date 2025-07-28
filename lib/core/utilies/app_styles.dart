@@ -13,7 +13,7 @@ class AppStyles{
   static  TextStyle subTitlesStyle = TextStyle(
     color: AppColors.secondaryColor,
     fontWeight: FontWeight.w500,
-    fontSize: 16.sp
+    fontSize: 12.sp
   );
   static  TextStyle white700wSize12Inter = GoogleFonts.inter(
     color: AppColors.white,

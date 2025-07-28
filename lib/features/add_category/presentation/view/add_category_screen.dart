@@ -6,7 +6,7 @@ import 'package:firebase_learn/features/add_category/presentation/view/widget/ad
 import 'package:firebase_learn/features/auth/widget/arrow_appbar_widget.dart';
 import 'package:firebase_learn/features/auth/widget/custom_appbar_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 class AddCategoryScreen extends StatefulWidget {
   const AddCategoryScreen({super.key});
@@ -29,19 +29,15 @@ class _AddCategoryScreenState extends State<AddCategoryScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => AddCategoryCubit(addCategoryRepo: AddCategoryRepoFirebaseImplementation()),
-      child: Scaffold(
-        backgroundColor: AppColors.white,
-        appBar: AppBar(
-          leading: const SizedBox(),
-          flexibleSpace: const CustomAppbarWidget(
-            title: AppTexts.addCategory,
-            leading: ArrowAppbarWidget(),
-          ),
+    return Scaffold(
+      backgroundColor: AppColors.white,
+      appBar: AppBar(
+        leading:  ArrowAppbarWidget(onPressed: (){GoRouter.of(context).pop(true);},),
+        flexibleSpace: const CustomAppbarWidget(
+          title: AppTexts.addCategory,
         ),
-        body: AddCategoryBody(categoryController: categoryController,formState: formSate,),
       ),
+      body: AddCategoryBody(categoryController: categoryController,formState: formSate,),
     );
   }
 }

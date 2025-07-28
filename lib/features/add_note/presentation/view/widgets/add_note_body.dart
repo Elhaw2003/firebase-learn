@@ -8,6 +8,7 @@ import 'package:firebase_learn/features/add_note/data/model/note_model.dart';
 import 'package:firebase_learn/features/add_note/presentation/controller/cubit/add_note_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../../../core/utilies/app_colors.dart';
 import '../../../../../core/widgets/custom_awesom_dialog_method.dart';
@@ -41,11 +42,9 @@ class AddNoteBody extends StatelessWidget {
               dialogType: DialogType.success,
               btnOkColor: AppColors.green,
               btnOkOnPress: () {
-                // Navigator.pushReplacement(context, MaterialPageRoute(builder: (c){
-                //   return const HomeScreen();
-                // }));
-              });
-        } else if (state is AddNoteFailureState) {
+                GoRouter.of(context).pop(true);
+        });
+        }else if (state is AddNoteFailureState) {
           Navigator.of(context, rootNavigator: true).pop();
           CustomAwesomDialogMethod.awesomeDialog(
               context: context,
@@ -93,7 +92,8 @@ class AddNoteBody extends StatelessWidget {
                             noteModel: NoteModel(
                                 title: titleController.text.trim(),
                                 description: descriptionController.text.trim()),
-                            categoryId: categoryId);
+                            categoryId: categoryId
+                        );
                       }
                     },
                   ),

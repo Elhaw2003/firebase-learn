@@ -7,6 +7,7 @@ import 'package:firebase_learn/features/update_category/presentation/controller/
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 import '../../../../../core/utilies/app_colors.dart';
 import '../../../../../core/utilies/app_styles.dart';
 import '../../../../../core/utilies/app_texts.dart';
@@ -28,6 +29,7 @@ class UpdateCategoryBody extends StatelessWidget {
         if (state is UpdateCategoryNameLoadingState) {
           LoadingShowDialogMethod.showLoadingDialog(context);
         } else if (state is UpdateCategoryNameSuccessState) {
+          Navigator.of(context,rootNavigator: true).pop();
           ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(
                 duration: const Duration(seconds: 1),
@@ -35,9 +37,7 @@ class UpdateCategoryBody extends StatelessWidget {
                 backgroundColor: AppColors.green,
               ),
           );
-          Navigator.pushReplacement(context, MaterialPageRoute(builder: (c){
-            return const HomeScreen();
-          }));
+          GoRouter.of(context).pop(true);
         }else if (state is UpdateCategoryNameFailureState) {
           ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(

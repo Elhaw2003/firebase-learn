@@ -1,7 +1,8 @@
+import 'package:firebase_learn/core/app_routes/app_routes.dart';
 import 'package:firebase_learn/features/add_category/data/model/category_model.dart';
-import 'package:firebase_learn/features/note/presentation/view/note_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../../../core/utilies/app_colors.dart';
 import '../../../../../core/utilies/app_styles.dart';
@@ -15,9 +16,7 @@ class ItemGridViewWidget extends StatelessWidget {
       splashFactory: NoSplash.splashFactory,
       highlightColor: Colors.transparent,
       onTap: (){
-        Navigator.push(context, MaterialPageRoute(builder: (c){
-          return  NoteScreen(categoryId: categoryModel.categoryId!,);
-        }));
+        GoRouter.of(context).pushNamed(AppRoutes.noteScreen,extra: categoryModel.categoryId);
       },
       child: Card(
         color: AppColors.white,

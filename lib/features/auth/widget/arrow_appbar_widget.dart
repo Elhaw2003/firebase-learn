@@ -2,13 +2,12 @@ import 'package:flutter/material.dart';
 import '../../../core/utilies/app_colors.dart';
 
 class ArrowAppbarWidget extends StatelessWidget {
-  const ArrowAppbarWidget({super.key});
+  const ArrowAppbarWidget({super.key,required this.onPressed});
+  final void Function()? onPressed;
   @override
   Widget build(BuildContext context) {
     return IconButton(
-        onPressed: () {
-          Navigator.pop(context);
-        },
+        onPressed: onPressed,
         icon: const Icon(
           size: 19,
           Icons.arrow_back_ios_new_outlined,

@@ -1,6 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_learn/core/app_routes/router_generation.dart';
 import 'package:firebase_learn/features/auth/login/presentation/view/login_screen.dart';
 import 'package:firebase_learn/features/home/presentation/view/home_screen.dart';
 import 'package:flutter/material.dart';
@@ -43,9 +44,9 @@ class _FirebaseLearnAppState extends State<FirebaseLearnApp> {
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (context, child) {
-        return  MaterialApp(
-          home: FirebaseAuth.instance.currentUser != null && FirebaseAuth.instance.currentUser!.emailVerified  ? const HomeScreen() : const LoginScreen(),
+        return  MaterialApp.router(
           debugShowCheckedModeBanner: false,
+          routerConfig: RouterGenerator.routerGeneration,
         );
       },
     );

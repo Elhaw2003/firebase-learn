@@ -1,10 +1,7 @@
 import 'package:firebase_learn/features/add_category/data/model/category_model.dart';
 import 'package:firebase_learn/features/home/presentation/view/widgets/item_stack_grid_view_categories_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
-
-import '../../../../../core/utilies/app_styles.dart';
 import '../../../../../core/utilies/app_texts.dart';
 
 class GridViewNoteWidget extends StatelessWidget {
@@ -13,7 +10,7 @@ class GridViewNoteWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return categories.isEmpty ?
-    Center(child: Text(AppTexts.noCategoriesAdded,style: AppStyles.black600wSize16Inter),)
+    const Center(child: Text(AppTexts.noCategoriesAdded))
         : GridView.builder(
       physics: const BouncingScrollPhysics(),
       itemCount: categories.length,

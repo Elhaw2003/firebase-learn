@@ -1,7 +1,9 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
+import 'package:firebase_learn/core/app_routes/app_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../../../../core/utilies/app_colors.dart';
 import '../../../../../../core/utilies/app_texts.dart';
@@ -13,7 +15,6 @@ import '../../../../../../core/widgets/loading_show_dialog_method.dart';
 import '../../../../../../core/widgets/spacing_widget.dart';
 import '../../../../../../generated/assets.dart';
 import '../../../../../home/presentation/view/home_screen.dart';
-import '../../../../register/presentation/view/register_screen.dart';
 import '../../../../widget/or_login_register_widget.dart';
 import '../../../../widget/rich_text_widget.dart';
 import '../../controller/cubit/forgot_password/forgot_password_firebase_cubit.dart';
@@ -52,10 +53,7 @@ class LoginBody extends StatelessWidget {
                             dialogType: DialogType.success,
                             btnOkColor: AppColors.green,
                             btnOkOnPress: () {
-                              Navigator.pushReplacement(context,
-                                  MaterialPageRoute(builder: (c) {
-                                    return const HomeScreen();
-                                  }));
+                              GoRouter.of(context).pushReplacementNamed(AppRoutes.homeScreen);
                             });
                       } else
                       if (state is LoginWithEmailAndPasswordFailureState) {
@@ -83,10 +81,7 @@ class LoginBody extends StatelessWidget {
                             dialogType: DialogType.success,
                             btnOkColor: AppColors.green,
                             btnOkOnPress: () {
-                              Navigator.pushReplacement(context,
-                                  MaterialPageRoute(builder: (c) {
-                                    return const HomeScreen();
-                                  }));
+                              GoRouter.of(context).pushReplacementNamed(AppRoutes.homeScreen);
                             });
                       } else if (state is LoginWithGoogleFailureState) {
                         Navigator.of(context, rootNavigator: true).pop();
@@ -222,10 +217,7 @@ class LoginBody extends StatelessWidget {
                       alignment: Alignment.center,
                       child: RichTextWidget(
                           onTap: () {
-                            Navigator.pushReplacement(context,
-                                MaterialPageRoute(builder: (c) {
-                                  return const RegisterScreen();
-                                }));
+                            GoRouter.of(context).pushNamed(AppRoutes.registerScreen);
                           },
                           firstText: AppTexts.doNotHaveAnAccount,
                           secondText: AppTexts.registerNow),
