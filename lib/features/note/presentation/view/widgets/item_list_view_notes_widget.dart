@@ -5,6 +5,7 @@ import 'package:firebase_learn/core/utilies/app_styles.dart';
 import 'package:firebase_learn/core/widgets/custom_delete_button_widget.dart';
 import 'package:firebase_learn/core/widgets/custom_edit_button_widget.dart';
 import 'package:firebase_learn/features/add_note/data/model/note_model.dart';
+import 'package:firebase_learn/features/note/presentation/view/widgets/delete_note_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -28,7 +29,9 @@ class ItemListViewNotesWidget extends StatelessWidget {
             }
           },
         ),
-        trailing: const CustomDeleteButtonWidget(),
+        trailing:  DeleteNoteWidget(
+          noteId: noteModel.noteId!,
+          categoryId: categoryId,),
         title: Text(noteModel.title,style: AppStyles.black600wSize16Inter,),
         subtitle: Text(noteModel.description,style: AppStyles.subTitlesStyle,),
       ),

@@ -1,4 +1,6 @@
 import 'package:firebase_learn/core/app_routes/app_routes.dart';
+import 'package:firebase_learn/features/note/data/repo/delete_note_repo/delete_note_repo_firebase_implementation.dart';
+import 'package:firebase_learn/features/note/presentation/controller/cubit/delete_note/delete_note_cubit.dart';
 import 'package:firebase_learn/features/update_category/presentation/view/update_category_screen.dart';
 import 'package:firebase_learn/features/update_note/data/repo/update_note_repo_firebase_implementation.dart';
 import 'package:firebase_learn/features/update_note/presentation/controller/cubit/update_note_cubit.dart';
@@ -112,8 +114,14 @@ class RouterGenerator {
         name: AppRoutes.noteScreen,
         builder: (context, state) {
           final categoryId = state.extra as String;
-          return BlocProvider(create: (context) => GetNotesCubit(getNotesRepo: GetNotesRepoFirebaseImplementation())..getNotesCubit(categoryId: categoryId), child:  NoteScreen(categoryId: categoryId,));
-        },
+          return MultiBlocProvider(
+              providers: [
+            BlocProvider(create: (context) => GetNotesCubit(getNotesRepo: GetNotesRepoFirebaseImplementation())..getNotesCubit(categoryId: categoryId),),
+            BlocProvider(create: (context) => DeleteNoteCubit(deleteNoteRepo: DeleteNoteRepoFirebaseImplementation())),
+              ],
+            child:  NoteScreen(categoryId: categoryId,)
+          );
+          },
       ),
 
       /// ---------------- Add Note ----------------
