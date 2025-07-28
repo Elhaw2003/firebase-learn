@@ -5,8 +5,9 @@ import 'package:flutter/material.dart';
 import '../../../../../core/widgets/spacing_widget.dart';
 
 class ListViewNotesWidget extends StatelessWidget {
-  const ListViewNotesWidget({super.key, required this.notes});
+  const ListViewNotesWidget({super.key, required this.notes, required this.categoryId});
   final List<NoteModel> notes;
+  final String categoryId;
   @override
   Widget build(BuildContext context) {
     return notes.isEmpty ? const Center(child: Text(AppTexts.noNotesAdded)) : ListView.separated(
@@ -14,7 +15,7 @@ class ListViewNotesWidget extends StatelessWidget {
       itemCount: notes.length,
       separatorBuilder: (context, index) => const HeightSpacing(height: 20),
       itemBuilder: (context, index) {
-        return  ItemListViewNotesWidget(noteModel: notes[index]);
+        return  ItemListViewNotesWidget(noteModel: notes[index],categoryId: categoryId,);
       },
     );
   }

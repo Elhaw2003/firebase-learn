@@ -14,7 +14,7 @@ class GetNotesRepoFirebaseImplementation implements GetNotesRepo{
 
       final response = await FirebaseFirestore.instance.collection(Collections.categories).doc(categoryId).collection(Collections.notes).orderBy("createdAt",descending: false).get();
       List<NoteModel> notes = response.docs.map((doc){
-        return NoteModel.fromJson(doc.data());
+        return NoteModel.fromJson(doc);
       }).toList();
 
       return right(notes);

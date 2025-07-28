@@ -30,7 +30,7 @@ class NoteBody extends StatelessWidget {
                         ? const Center(child: CircularProgressIndicator(color: AppColors.primaryColor,),)
                         : state is GetNotesFailureState
                         ? Center(child: CustomFailureWidget(message: state.message,))
-                        : state is GetNotesSuccessState ? ListViewNotesWidget(notes: state.notes,)
+                        : state is GetNotesSuccessState ? ListViewNotesWidget(notes: state.notes,categoryId: categoryId,)
                         : const SizedBox.shrink();
                   },
                 )

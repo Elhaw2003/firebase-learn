@@ -8,8 +8,11 @@ import 'package:go_router/go_router.dart';
 import '../../../../core/utilies/app_colors.dart';
 
 class UpdateNoteScreen extends StatefulWidget {
-  const UpdateNoteScreen({super.key});
-
+  const UpdateNoteScreen({super.key, required this.categoryId, required this.oldTitle, required this.oldDescription, required this.noteId});
+  final String categoryId;
+  final String oldTitle;
+  final String oldDescription;
+  final String noteId;
   @override
   State<UpdateNoteScreen> createState() => _UpdateNoteScreenState();
 }
@@ -19,6 +22,22 @@ class _UpdateNoteScreenState extends State<UpdateNoteScreen> {
   TextEditingController titleController = TextEditingController();
   TextEditingController descriptionController = TextEditingController();
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    titleController.text = widget.oldTitle;
+    descriptionController.text = widget.oldDescription;
+    super.initState();
+  }
+
+  @override
+  void dispose(){
+    titleController.dispose();
+    descriptionController.dispose();
+    super.dispose();
+  }
+
 
 
   @override
@@ -33,6 +52,8 @@ class _UpdateNoteScreenState extends State<UpdateNoteScreen> {
         descriptionController: descriptionController,
         titleController: titleController,
         formKey: formKey,
+        noteId: widget.noteId,
+        categoryId: widget.categoryId,
       ),
     );
   }

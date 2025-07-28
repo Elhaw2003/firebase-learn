@@ -1,5 +1,7 @@
 import 'package:firebase_learn/core/app_routes/app_routes.dart';
 import 'package:firebase_learn/features/update_category/presentation/view/update_category_screen.dart';
+import 'package:firebase_learn/features/update_note/data/repo/update_note_repo_firebase_implementation.dart';
+import 'package:firebase_learn/features/update_note/presentation/controller/cubit/update_note_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -34,6 +36,7 @@ import '../../features/note/presentation/view/note_screen.dart';
 import '../../features/update_category/data/repo/update_category_name_repo_firebase_implementation.dart';
 import '../../features/update_category/presentation/controller/cubit/update_category_name_cubit.dart';
 import '../../features/update_note/presentation/view/update_note_screen.dart';
+import '../models/update_note_params.dart';
 class RouterGenerator {
    static  GoRouter routerGeneration = GoRouter(
     initialLocation: FirebaseAuth.instance.currentUser != null && FirebaseAuth.instance.currentUser!.emailVerified   ? AppRoutes.homeScreen : AppRoutes.loginScreen,
@@ -127,7 +130,15 @@ class RouterGenerator {
         path: AppRoutes.updateNoteScreen,
         name: AppRoutes.updateNoteScreen,
         builder: (context, state) {
-          return const UpdateNoteScreen();
+          final UpdateNoteParams updateNoteParams = state.extra as UpdateNoteParams;
+          return BlocProvider(
+              create: (context) => UpdateNoteCubit(updateNoteRepo: UpdateNoteRepoFirebaseImplementation()),
+              child: UpdateNoteScreen(
+                categoryId: updateNoteParams.categoryId,
+                noteId: updateNoteParams.noteId,
+                oldDescription: updateNoteParams.oldDescription,
+                oldTitle: updateNoteParams.oldTitle,
+              ));
         }
       )
     ],

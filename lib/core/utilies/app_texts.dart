@@ -62,6 +62,7 @@ abstract class AppTexts{
   static const String addedNoteSuccessfully = "Added Note Successfully..";
   static const String deletedCategorySuccessfully = "Deleted Category Successfully..";
   static const String updateCategorySuccessfully = "Update Category Successfully..";
+  static const String updateNoteSuccessfully = "Update Note Successfully..";
   static const String noCategoriesAdded = "No Categories Added Click On Button Add";
   static const String noNotesAdded = "No Notes Added Click On Button Add";
 }

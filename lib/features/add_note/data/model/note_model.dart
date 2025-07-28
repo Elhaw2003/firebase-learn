@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class NoteModel {
-  // String? noteId;
+  String? noteId;
   final DateTime? createdAt;
   final String title;
   final String description;
@@ -9,10 +9,11 @@ class NoteModel {
     required this.title,
     required this.description,
     this.createdAt,
+    this.noteId,
   });
 
-  factory NoteModel.fromJson(Map<String, dynamic> json) {
-
+  factory NoteModel.fromJson(DocumentSnapshot doc) {
+    final json = doc.data() as Map<String, dynamic>;
     final rawCreatedAt = json['createdAt'];
     DateTime? parsedCreatedAt;
 
@@ -34,7 +35,8 @@ class NoteModel {
     return NoteModel(
         title: json['title'],
         description: json['description'],
-        createdAt: parsedCreatedAt
+        createdAt: parsedCreatedAt,
+        noteId: doc.id
     );
 
   }
