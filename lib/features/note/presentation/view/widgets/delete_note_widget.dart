@@ -6,7 +6,6 @@ import 'package:firebase_learn/features/note/presentation/controller/cubit/delet
 import 'package:firebase_learn/features/note/presentation/controller/cubit/get_notes/get_notes_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import '../../../../../core/utilies/app_colors.dart';
 import '../../../../../core/utilies/app_styles.dart';
 import '../../../../../core/widgets/custom_delete_button_widget.dart';

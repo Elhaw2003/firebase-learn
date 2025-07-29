@@ -1,4 +1,5 @@
 import 'package:firebase_learn/core/app_routes/app_routes.dart';
+import 'package:firebase_learn/features/home/presentation/controller/cubit/pick_image/pick_image_cubit.dart';
 import 'package:firebase_learn/features/note/data/repo/delete_note_repo/delete_note_repo_firebase_implementation.dart';
 import 'package:firebase_learn/features/note/presentation/controller/cubit/delete_note/delete_note_cubit.dart';
 import 'package:firebase_learn/features/update_category/presentation/view/update_category_screen.dart';
@@ -83,6 +84,7 @@ class RouterGenerator {
              getCategoriesRepo: GetCategoriesRepoFirebaseImplementation(),
            )..getCategoriesCubit(),),
            BlocProvider( create: (_) => DeleteCategoryCubit(deleteCategoryRepo: DeleteCategoryRepoFirebaseImplementation()),),
+           BlocProvider( create: (_) => PickImageCubit(),),
          ],
           child: const HomeScreen(),
         ),

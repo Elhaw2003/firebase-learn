@@ -2,7 +2,6 @@ import 'package:firebase_learn/core/app_routes/app_routes.dart';
 import 'package:firebase_learn/core/models/update_note_params.dart';
 import 'package:firebase_learn/core/utilies/app_colors.dart';
 import 'package:firebase_learn/core/utilies/app_styles.dart';
-import 'package:firebase_learn/core/widgets/custom_delete_button_widget.dart';
 import 'package:firebase_learn/core/widgets/custom_edit_button_widget.dart';
 import 'package:firebase_learn/features/add_note/data/model/note_model.dart';
 import 'package:firebase_learn/features/note/presentation/view/widgets/delete_note_widget.dart';

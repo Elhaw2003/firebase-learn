@@ -1,5 +1,4 @@
 import 'package:firebase_learn/features/home/presentation/view/widgets/floating_widget.dart';
-import 'package:firebase_learn/features/note/data/repo/get_note_repo/get_notes_repo_firebase_implementation.dart';
 import 'package:firebase_learn/features/note/presentation/controller/cubit/get_notes/get_notes_cubit.dart';
 import 'package:firebase_learn/features/note/presentation/view/widgets/note_body.dart';
 import 'package:flutter/material.dart';

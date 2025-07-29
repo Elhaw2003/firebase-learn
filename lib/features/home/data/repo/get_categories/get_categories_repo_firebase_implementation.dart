@@ -17,7 +17,7 @@ class GetCategoriesRepoFirebaseImplementation implements GetCategoriesRepo {
       QuerySnapshot querySnapshot = await FirebaseFirestore.instance
           .collection(Collections.categories)
           .orderBy("createdAt", descending: false)
-          .where("userId",isEqualTo: FirebaseAuth.instance.currentUser!.uid)
+          .where("userId", isEqualTo: FirebaseAuth.instance.currentUser!.uid)
           .get();
 
       List<CategoryModel> categories = querySnapshot.docs.map((doc) {

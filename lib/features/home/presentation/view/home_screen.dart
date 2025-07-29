@@ -8,6 +8,7 @@ import 'package:firebase_learn/features/auth/widget/custom_appbar_widget.dart';
 import 'package:firebase_learn/features/home/presentation/controller/cubit/get_categories/get_categories_cubit.dart';
 import 'package:firebase_learn/features/home/presentation/view/widgets/floating_widget.dart';
 import 'package:firebase_learn/features/home/presentation/view/widgets/home_body.dart';
+import 'package:firebase_learn/features/home/presentation/view/widgets/image_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -50,7 +51,7 @@ class HomeScreen extends StatelessWidget {
             },
           ),
         ),
-        body: const HomeBody()
+        body: ImageWidget()
     );
   }
 }
