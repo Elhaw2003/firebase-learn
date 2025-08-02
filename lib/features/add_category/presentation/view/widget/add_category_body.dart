@@ -14,7 +14,7 @@ import '../../../../../core/utilies/app_texts.dart';
 import '../../../../../core/widgets/custom_button_widget.dart';
 import '../../../../../core/widgets/custom_text_field_widget.dart';
 import '../../../../../core/widgets/spacing_widget.dart';
-import '../../../../home/presentation/view/home_screen.dart';
+import '../../../../home/data/repo/show_notification/show_notification_func.dart';
 
 class AddCategoryBody extends StatelessWidget {
   const AddCategoryBody({super.key, required this.categoryController, required this.formState});
@@ -37,6 +37,7 @@ class AddCategoryBody extends StatelessWidget {
               btnOkColor: AppColors.green,
               btnOkOnPress: (){
                 GoRouter.of(context).pop(true);
+                ShowNotificationFunc.showNotification(title: "Success", body: AppTexts.addedCategorySuccessfully);
               }
           );
         }else if (state is AddCategoryFailureState) {

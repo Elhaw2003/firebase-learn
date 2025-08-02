@@ -4,14 +4,28 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_learn/core/app_routes/router_generation.dart';
 import 'package:firebase_learn/features/auth/login/presentation/view/login_screen.dart';
 import 'package:firebase_learn/features/home/presentation/view/home_screen.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'core/services/manage_cubit_servise.dart';
-
+// Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
+//   print("============================================");
+//   print(message.notification!.title);
+//   print(message.notification!.body);
+//   print("============================================");
+// }
+final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+  // FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
+  // اعداد خاص بال android only
+  const AndroidInitializationSettings initializationSettingsAndroid = AndroidInitializationSettings('note_icon_whiteandblack');
+  // اعداد خاص بال all
+  const InitializationSettings initializationSettings = InitializationSettings(android: initializationSettingsAndroid,);
+  await flutterLocalNotificationsPlugin.initialize(initializationSettings);
   Bloc.observer = MyBlocObserver();
   runApp(const FirebaseLearnApp());
 }

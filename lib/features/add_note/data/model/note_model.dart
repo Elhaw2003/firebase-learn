@@ -17,6 +17,7 @@ class NoteModel {
     final rawCreatedAt = json['createdAt'];
     DateTime? parsedCreatedAt;
 
+
     if (rawCreatedAt is Timestamp) {
       parsedCreatedAt = rawCreatedAt.toDate();
     } else if (rawCreatedAt is String) {

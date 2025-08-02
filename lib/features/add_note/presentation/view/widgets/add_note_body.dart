@@ -6,6 +6,7 @@ import 'package:firebase_learn/core/widgets/custom_text_field_widget.dart';
 import 'package:firebase_learn/core/widgets/spacing_widget.dart';
 import 'package:firebase_learn/features/add_note/data/model/note_model.dart';
 import 'package:firebase_learn/features/add_note/presentation/controller/cubit/add_note_cubit.dart';
+import 'package:firebase_learn/features/home/data/repo/show_notification/show_notification_func.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -43,7 +44,8 @@ class AddNoteBody extends StatelessWidget {
               btnOkColor: AppColors.green,
               btnOkOnPress: () {
                 GoRouter.of(context).pop(true);
-        });
+                ShowNotificationFunc.showNotification(title: "Success", body: AppTexts.addedNoteSuccessfully);
+              });
         }else if (state is AddNoteFailureState) {
           Navigator.of(context, rootNavigator: true).pop();
           CustomAwesomDialogMethod.awesomeDialog(
