@@ -12,7 +12,7 @@ class GridViewNoteWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return categories.isEmpty ?
-    const Center(child: CustomLottieWidget(name: Assets.lottiesNoData))
+    const Center(child: CustomLottieWidget(name: Assets.lottiesNoCategoryData))
         : GridView.builder(
       physics: const BouncingScrollPhysics(),
       itemCount: categories.length,

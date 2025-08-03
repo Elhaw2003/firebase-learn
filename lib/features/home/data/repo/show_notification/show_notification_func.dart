@@ -11,12 +11,14 @@ class ShowNotificationFunc {
         'channelName',
         importance: Importance.max,
         priority: Priority.high,
-        icon: "note_icon_24",
+        icon: "note_icon_24",   // الايقونه ال بتتحط جنب اسم الابليكشن
         largeIcon: DrawableResourceAndroidBitmap("icon_note"),
         // ticker: 'ticker',
         color: AppColors.primaryColor,
-        sound: RawResourceAndroidNotificationSound("notification"),
-        playSound: true,
+        autoCancel: true,
+        // enableVibration: true
+        // sound: RawResourceAndroidNotificationSound("audio_notification"),
+        // playSound: true,
         // colorized: true
     );
    const  NotificationDetails notificationDetails = NotificationDetails(

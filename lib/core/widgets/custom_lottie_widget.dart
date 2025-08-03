@@ -12,7 +12,9 @@ class CustomLottieWidget extends StatelessWidget {
           name,
          fit: BoxFit.fill,
          width: 250.w,
-        height: 250.h
+        height: 250.h,
+        // repeat: true,
+        // reverse: true
       ),
     );
   }

@@ -36,15 +36,21 @@ import '../../features/home/presentation/view/home_screen.dart';
 import '../../features/note/data/repo/get_note_repo/get_notes_repo_firebase_implementation.dart';
 import '../../features/note/presentation/controller/cubit/get_notes/get_notes_cubit.dart';
 import '../../features/note/presentation/view/note_screen.dart';
+import '../../features/splash/view/splash_screen.dart';
 import '../../features/update_category/data/repo/update_category_name_repo_firebase_implementation.dart';
 import '../../features/update_category/presentation/controller/cubit/update_category_name_cubit.dart';
 import '../../features/update_note/presentation/view/update_note_screen.dart';
 import '../models/update_note_params.dart';
 class RouterGenerator {
    static  GoRouter routerGeneration = GoRouter(
-    initialLocation: FirebaseAuth.instance.currentUser != null && FirebaseAuth.instance.currentUser!.emailVerified   ? AppRoutes.homeScreen : AppRoutes.loginScreen,
+    initialLocation: AppRoutes.splashScreen,
     routes: [
-
+      /// ---------------- Splash Screen ----------------
+      GoRoute(
+        path: AppRoutes.splashScreen,
+        name: AppRoutes.splashScreen,
+        builder: (context, state) => const SplashScreen(),
+      ),
       /// ---------------- Auth Screens ----------------
       GoRoute(
           path: AppRoutes.loginScreen,

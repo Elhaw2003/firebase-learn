@@ -7,6 +7,7 @@ import 'package:firebase_learn/features/home/presentation/view/home_screen.dart'
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'core/services/manage_cubit_servise.dart';
@@ -19,6 +20,9 @@ import 'core/services/manage_cubit_servise.dart';
 final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
+  FlutterNativeSplash.preserve(widgetsBinding: WidgetsFlutterBinding.ensureInitialized());
+  await Future.delayed(const Duration(seconds: 2));
+  FlutterNativeSplash.remove();
   await Firebase.initializeApp();
   // FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
   // اعداد خاص بال android only
