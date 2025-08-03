@@ -26,7 +26,7 @@ class ItemGridViewWidget extends StatelessWidget {
               Icon(
                 Icons.folder,
                 color: AppColors.yellow,
-                size: 100.sp,
+                size: 80.sp,
               ),
               SizedBox(
                 height: 8.h,

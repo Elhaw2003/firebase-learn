@@ -8,7 +8,10 @@ class Assets {
   static const String iconsEditSquare = 'assets/icons/Edit-Square.svg';
   static const String iconsFacebookIcon = 'assets/icons/facebook_icon.svg';
   static const String iconsGoogleIcon = 'assets/icons/google_icon.svg';
+  static const String iconsNoteIcon24 = 'assets/icons/note_icon_24.png';
   static const String iconsSend = 'assets/icons/Send.svg';
   static const String iconsWallet = 'assets/icons/Wallet.svg';
+  static const String lottiesNoData = 'assets/lotties/No Data.json';
+  static const String lottiesNoDataFound = 'assets/lotties/No Data found.json';
 
 }

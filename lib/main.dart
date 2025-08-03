@@ -22,7 +22,7 @@ void main() async{
   await Firebase.initializeApp();
   // FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
   // اعداد خاص بال android only
-  const AndroidInitializationSettings initializationSettingsAndroid = AndroidInitializationSettings('note_icon_whiteandblack');
+  const AndroidInitializationSettings initializationSettingsAndroid = AndroidInitializationSettings('note_icon_24');
   // اعداد خاص بال all
   const InitializationSettings initializationSettings = InitializationSettings(android: initializationSettingsAndroid,);
   await flutterLocalNotificationsPlugin.initialize(initializationSettings);
@@ -59,6 +59,7 @@ class _FirebaseLearnAppState extends State<FirebaseLearnApp> {
       splitScreenMode: true,
       builder: (context, child) {
         return  MaterialApp.router(
+          title: "Note App",
           debugShowCheckedModeBanner: false,
           routerConfig: RouterGenerator.routerGeneration,
         );

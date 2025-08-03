@@ -11,10 +11,13 @@ class ShowNotificationFunc {
         'channelName',
         importance: Importance.max,
         priority: Priority.high,
-        icon: "note_icon_whiteandblack",
+        icon: "note_icon_24",
         largeIcon: DrawableResourceAndroidBitmap("icon_note"),
-        ticker: 'ticker',
+        // ticker: 'ticker',
         color: AppColors.primaryColor,
+        sound: RawResourceAndroidNotificationSound("notification"),
+        playSound: true,
+        // colorized: true
     );
    const  NotificationDetails notificationDetails = NotificationDetails(
       android: androidNotificationDetails,

@@ -18,7 +18,8 @@ class HomeBody extends StatelessWidget {
         return Padding(
           padding:  EdgeInsets.symmetric(horizontal: 15.w),
           child: RefreshIndicator(
-            elevation: 0,
+            backgroundColor: AppColors.white,
+            // elevation: 0,
             color: AppColors.primaryColor,
             onRefresh: () async{
               await context.read<GetCategoriesCubit>().getCategoriesCubit();

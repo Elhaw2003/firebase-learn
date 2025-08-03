@@ -1,8 +1,10 @@
+import 'package:firebase_learn/core/widgets/custom_lottie_widget.dart';
 import 'package:firebase_learn/features/add_category/data/model/category_model.dart';
 import 'package:firebase_learn/features/home/presentation/view/widgets/item_stack_grid_view_categories_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import '../../../../../core/utilies/app_texts.dart';
+import '../../../../../generated/assets.dart';
 
 class GridViewNoteWidget extends StatelessWidget {
   const GridViewNoteWidget({super.key, required this.categories});
@@ -10,7 +12,7 @@ class GridViewNoteWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return categories.isEmpty ?
-    const Center(child: Text(AppTexts.noCategoriesAdded))
+    const Center(child: CustomLottieWidget(name: Assets.lottiesNoData))
         : GridView.builder(
       physics: const BouncingScrollPhysics(),
       itemCount: categories.length,

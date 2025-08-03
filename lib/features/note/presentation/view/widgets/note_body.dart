@@ -15,7 +15,8 @@ class NoteBody extends StatelessWidget {
     return  Padding(
       padding: const EdgeInsets.symmetric(horizontal: 15),
       child: RefreshIndicator(
-        elevation: 0,
+        backgroundColor: AppColors.white,
+        // elevation: 0,
         color: AppColors.primaryColor,
         onRefresh: () async{
           context.read<GetNotesCubit>().getNotesCubit(categoryId: categoryId);
